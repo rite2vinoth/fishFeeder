@@ -8,17 +8,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <H1>Hello !!</H1>
+    <H1>Hello !!</H1>
   
-    <form action="/RunMotor.php" method="post" target="_self">
-        <input type="Submit" value="Feed Me"> 
-    </form>
-
+    <input type="Submit" id="feedMeBtn" value="Feed Me"> <span class="feedResult"></span> 
+    
     <br>
     <iframe height="480", width="640" src="http://jetbling.ddns.net:8084">
     </iframe>
     </br>
-    
+    <script>
+        let handler = () => {
+            fetch("/RunMotor.php")
+            .then(function(resp) {
+                document.querySelector(". feedResult").innerHTML = resp.text;
+            });
+        } 
+        document.getElementById("feedMeBtn").onclick = handler;
+    </script>
 
 </body>
 

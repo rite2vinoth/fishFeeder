@@ -19,8 +19,9 @@
     <script>
         let handler = () => {
             fetch("/RunMotor.php")
+            .then(response => response.text())
             .then(function(resp) {
-                document.querySelector(". feedResult").innerHTML = resp.text;
+                document.querySelector(". feedResult").innerHTML = resp;
             });
         } 
         document.getElementById("feedMeBtn").onclick = handler;
